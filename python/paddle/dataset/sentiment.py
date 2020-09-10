@@ -27,8 +27,8 @@ import collections
 from itertools import chain
 
 import os
-import nltk
-from nltk.corpus import movie_reviews
+#import nltk
+#from nltk.corpus import movie_reviews
 import zipfile
 from functools import cmp_to_key
 

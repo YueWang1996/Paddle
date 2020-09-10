@@ -15,7 +15,7 @@
 from __future__ import division
 
 import sys
-import cv2
+#import cv2
 import random
 
 import numpy as np
