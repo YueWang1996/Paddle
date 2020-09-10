@@ -26,7 +26,7 @@
 
 #if !defined(_WIN32)
 #include <dlfcn.h>     //  dladdr
-//#include <execinfo.h>  // backtrace
+#include <execinfo.h>  // backtrace
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <algorithm>  // std::accumulate

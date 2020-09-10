@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 lib=$1
 if [ $# -ne 1 ]; then echo "No input library"; exit -1 ; fi

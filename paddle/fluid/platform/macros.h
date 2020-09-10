@@ -25,6 +25,6 @@ limitations under the License. */
   classname& operator=(classname&&) = delete
 #endif
 
-#if defined(__FLT_MAX__)
-#define FLT_MAX __FLT_MAX__
-#endif  // __FLT_MAX__
+//#if defined(__FLT_MAX__)
+//#define FLT_MAX __FLT_MAX__
+//#endif  // __FLT_MAX__

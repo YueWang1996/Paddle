@@ -225,7 +225,7 @@ inline std::string SimplifyDemangleStr(std::string str) {
 template <typename StrType>
 inline std::string GetTraceBackString(StrType&& what, const char* file,
                                       int line) {
-  //static constexpr int TRACE_STACK_LIMIT = 100;
+  static constexpr int TRACE_STACK_LIMIT = 100;
   std::ostringstream sout;
 
   sout << "\n\n--------------------------------------------\n";
