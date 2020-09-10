@@ -223,7 +223,7 @@ def less_than_ver(a, b):
 # For paddle, the problem is that 'libgomp' is a DSO with static TLS, and it is loaded after 14 DSOs.
 # So, here is a tricky way to solve the problem by pre load 'libgomp' before 'core_avx.so'.
 # The final solution is to upgrade glibc to > 2.22 on the target system.
-if platform.system().lower() == 'linux' and less_than_ver(get_glibc_ver(),
+if platform.system().lower() == 'linux' and False and less_than_ver(get_glibc_ver(),
                                                           '2.23'):
     try:
         pre_load('libgomp')
