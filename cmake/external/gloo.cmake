@@ -14,15 +14,13 @@
 
 INCLUDE(ExternalProject)
 
-execute_process(COMMAND bash -c "gcc -dumpversion" OUTPUT_VARIABLE GCC_VERSION)
-
 SET(GLOO_PROJECT       "extern_gloo")
 IF((NOT DEFINED GLOO_VER) OR (NOT DEFINED GLOO_URL))
   MESSAGE(STATUS "use pre defined download url")
   SET(GLOO_VER "master" CACHE STRING "" FORCE)
   SET(GLOO_NAME "gloo" CACHE STRING "" FORCE)
 
-  if(${GCC_VERSION} VERSION_EQUAL "8.2.0")
+  if(${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "8.2.0")
     SET(GLOO_URL "https://fleet.bj.bcebos.com/gloo/gloo.tar.gz.gcc8" CACHE STRING "" FORCE)
   else()
     SET(GLOO_URL "https://fleet.bj.bcebos.com/gloo/gloo.tar.gz.gcc482" CACHE STRING "" FORCE)
