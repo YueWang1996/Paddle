@@ -19,6 +19,10 @@ if [ $HTTPS_PROXY ]; then
     echo "using https proxy: $HTTPS_PROXY"
 fi
 
+if [ $PIP_INDEX ]; then
+    PROXY_ARG="$PROXY_ARG --env PIP_INDEX=$PIP_INDEX"
+fi
+
 echo "compile paddle in docker"
 echo "docker image: $BUILD_IMAGE"
 
@@ -39,20 +43,25 @@ echo "mount paddle: $PADDLE_DIR => $MOUNT_DIR"
 if [ "$BUILD_AUTO" -eq "1" ]; then
     echo "enter automatic build mode"
 
+    # no exit when fails
+    set +e
+
     BUILD_SCRIPT=$MOUNT_DIR/paddle/scripts/musl_build/build_inside.sh
     echo "build script: $BUILD_SCRIPT"
 
     docker run \
         -v $PADDLE_DIR:$MOUNT_DIR \
-        --rm \
         --workdir /root \
         --network host $PROXY_ARG\
         --name $BUILD_NAME \
         $BUILD_IMAGE \
-        $BUILD_SCRIPT
+        $BUILD_SCRIPT $*
 
     echo "save output: $PWD/dist"
     docker cp $BUILD_NAME:/root/python/dist .
+
+    echo "remove container: $BUILD_NAME"
+    docker rm $BUILD_NAME
 else
     echo "enter manual build mode"
 
