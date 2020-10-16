@@ -73,17 +73,17 @@ if [ "$BUILD_AUTO" -eq "1" ]; then
     OUTPUT_DIR=$(realpath $OUTPUT_DIR)
     echo "build output: $OUTPUT_DIR"
 
-    # shellcheck disable=2086
+    # shellcheck disable=2086,2068
     docker run \
         -v "$PADDLE_DIR":"$MOUNT_DIR" \
         -v "$OUTPUT_DIR":/output \
         --rm \
         --workdir /root \
         --network host \
-        ${ENV_ARGS[*]}\
+        ${ENV_ARGS[*]} \
         --name "$BUILD_NAME" \
         "$BUILD_IMAGE" \
-        "$BUILD_SCRIPT" "$@"
+        "$BUILD_SCRIPT" $@
 
     echo "list output: $OUTPUT_DIR"
     ls "$OUTPUT_DIR"

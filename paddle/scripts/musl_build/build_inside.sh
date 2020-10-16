@@ -58,7 +58,8 @@ cmake "$PADDLE_DIR" \
     -DWITH_TESTING=OFF
 
 echo "compile with make: $"
-make "$@"
+# shellcheck disable=2068
+make $@
 
 echo "save python dist directory to /output"
 cp -r python/dist /output/
