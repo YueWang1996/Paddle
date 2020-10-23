@@ -48,7 +48,7 @@ export HTTPS_PROXY='https://127.0.0.1:8080'
 ls dist/*.whl
 ```
 
-# build paddle manually  
+# build manually  
 
 1. start up the building docker, and enter the shell in the container
 ```bash
